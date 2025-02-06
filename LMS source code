@@ -62,7 +62,7 @@ int main() {
     int choice;
 
     while (true) {
-        cout << "\nLibrary Management System\n";
+        cout << "\nOnline Library Management System\n";
         cout << "1. Add Book\n2. Display Books\n3. Search Book\n4. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -82,6 +82,5 @@ int main() {
                 return 0;
             default:
                 cout << "Incorrectchoice!  try again.\n";
-        }
-    }
+        } }
 }
