@@ -4,21 +4,21 @@
 
 using namespace std;
 
-// Structure to store book details
+// Structure to store book information
 struct Book {
     string title;
-    string author;
-    int id;
+    string writer;
+    int bookNo;
 };
 
-// Library class
+// class library
 class Library {
 private:
     vector<Book> books;
-    int bookCount;
+    int Noofbooks;
 
 public:
-    Library() : bookCount(0) {}
+    Library() : Noofbooks(0) {}
 
     // Function to add a book
     void addBook() {
@@ -26,12 +26,12 @@ public:
         cout << "Enter Book Title: ";
         cin.ignore();
         getline(cin, newBook.title);
-        cout << "Enter Author Name: ";
-        getline(cin, newBook.author);
-        newBook.id = ++bookCount;
+        cout << "Enter writer Name: ";
+        getline(cin, newBook.writer);
+        newBook.bookNo = ++Noofbooks;
 
         books.push_back(newBook);
-        cout << "Book added successfully! Book ID: " << newBook.id << endl;
+        cout << "Book added successfully! Book bookNo: " << newBook.bookNo << endl;
     }
 
     // Function to display all books
@@ -42,12 +42,12 @@ public:
         }
         cout << "\nAvailable Books:\n";
         for (const auto& book : books) {
-            cout << "ID: " << book.id << ", Title: " << book.title << ", Author: " << book.author << endl;
+            cout << "bookNo: " << book.bookNo << ", Title: " << book.title << ", writer: " << book.writer << endl;
         }
     }
 
     // Function to search for a book
-    void searchBook() {
+    void booksearch() {
         string searchTitle;
         cout << "Enter the book title to search: ";
         cin.ignore();
@@ -55,7 +55,7 @@ public:
 
         for (const auto& book : books) {
             if (book.title == searchTitle) {
-                cout << "Book Found! ID: " << book.id << ", Title: " << book.title << ", Author: " << book.author << endl;
+                cout << "Book Found! bookNo: " << book.bookNo << ", Title: " << book.title << ", writer: " << book.writer << endl;
                 return;
             }
         }
@@ -82,7 +82,7 @@ int main() {
                 library.displayBooks();
                 break;
             case 3:
-                library.searchBook();
+                library.booksearch();
                 break;
             case 4:
                 cout << "Exiting the program.\n";
