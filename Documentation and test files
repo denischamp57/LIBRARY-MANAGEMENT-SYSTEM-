@@ -60,9 +60,8 @@ void Library::displayBooks() {
         return;
     }
     for (const auto& book : books) {
-        cout << "bookNo: " << book.bookNo << ", Title: " << book.title 
-             << ", writer: " << book.writer << endl;
-    }
+cout << "bookNo: " << book.bookNo << ", Title: " << book.title 
+             << ", writer: " << book.writer << endl; }
 }
  Searching for a Book
 Compares input with stored book titles:
@@ -74,12 +73,10 @@ void Library::booksearch() {
     getline(cin, searchTitle);
 
     for (const auto& book : books) {
-        if (book.title == searchTitle) {
-            cout << "Book Found! bookNo: " << book.bookNo << ", Title: " << book.title 
-                 << ", writer: " << book.writer << endl;
+        if (book.title == searchTitle) { cout << "Book Found! bookNo: " << book.bookNo << ", Title: " << book.title << ", writer: " << book.writer << endl;
             return;
-        }
-    }
+ }
+  }
     cout << "Book not found.\n";
 }
 
