@@ -4,14 +4,13 @@
 
 using namespace std;
 
-// Structure to store book information
 struct Book {
     string title;
     string writer;
     int bookNo;
 };
 
-// class library
+
 class Library {
 private:
     vector<Book> books;
@@ -20,7 +19,6 @@ private:
 public:
     Library() : Noofbooks(0) {}
 
-    // Function to add a book
     void addBook() {
         Book newBook;
         cout << "Enter Book Title: ";
@@ -34,7 +32,6 @@ public:
         cout << "Book added successfully! Book bookNo: " << newBook.bookNo << endl;
     }
 
-    // Function to display all books
     void displayBooks() {
         if (books.empty()) {
             cout << "No books available in the library.\n";
@@ -45,15 +42,13 @@ public:
             cout << "bookNo: " << book.bookNo << ", Title: " << book.title << ", writer: " << book.writer << endl;
         }
     }
-
-    // Function to search for a book
     void booksearch() {
         string searchTitle;
         cout << "Enter the book title to search: ";
         cin.ignore();
         getline(cin, searchTitle);
 
-        for (const auto& book : books) {
+for (const auto& book : books) {
             if (book.title == searchTitle) {
                 cout << "Book Found! bookNo: " << book.bookNo << ", Title: " << book.title << ", writer: " << book.writer << endl;
                 return;
@@ -62,8 +57,6 @@ public:
         cout << "Book not found.\n";
     }
 };
-
-// Main function
 int main() {
     Library library;
     int choice;
@@ -88,7 +81,7 @@ int main() {
                 cout << "Exiting the program.\n";
                 return 0;
             default:
-                cout << "Invalid choice! Please try again.\n";
+                cout << "Incorrectchoice!  try again.\n";
         }
     }
 }
