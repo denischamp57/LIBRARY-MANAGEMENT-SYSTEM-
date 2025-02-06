@@ -1,3 +1,5 @@
+HOW THE SOURCE CODE WORKS.
+
 The Book structure stores details like identification unique book code (bookNo), title, and writer.
 
 Books are stored in a vector because of changing periodically.
