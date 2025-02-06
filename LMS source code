@@ -1,0 +1,94 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Structure to store book details
+struct Book {
+    string title;
+    string author;
+    int id;
+};
+
+// Library class
+class Library {
+private:
+    vector<Book> books;
+    int bookCount;
+
+public:
+    Library() : bookCount(0) {}
+
+    // Function to add a book
+    void addBook() {
+        Book newBook;
+        cout << "Enter Book Title: ";
+        cin.ignore();
+        getline(cin, newBook.title);
+        cout << "Enter Author Name: ";
+        getline(cin, newBook.author);
+        newBook.id = ++bookCount;
+
+        books.push_back(newBook);
+        cout << "Book added successfully! Book ID: " << newBook.id << endl;
+    }
+
+    // Function to display all books
+    void displayBooks() {
+        if (books.empty()) {
+            cout << "No books available in the library.\n";
+            return;
+        }
+        cout << "\nAvailable Books:\n";
+        for (const auto& book : books) {
+            cout << "ID: " << book.id << ", Title: " << book.title << ", Author: " << book.author << endl;
+        }
+    }
+
+    // Function to search for a book
+    void searchBook() {
+        string searchTitle;
+        cout << "Enter the book title to search: ";
+        cin.ignore();
+        getline(cin, searchTitle);
+
+        for (const auto& book : books) {
+            if (book.title == searchTitle) {
+                cout << "Book Found! ID: " << book.id << ", Title: " << book.title << ", Author: " << book.author << endl;
+                return;
+            }
+        }
+        cout << "Book not found.\n";
+    }
+};
+
+// Main function
+int main() {
+    Library library;
+    int choice;
+
+    while (true) {
+        cout << "\nLibrary Management System\n";
+        cout << "1. Add Book\n2. Display Books\n3. Search Book\n4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                library.addBook();
+                break;
+            case 2:
+                library.displayBooks();
+                break;
+            case 3:
+                library.searchBook();
+                break;
+            case 4:
+                cout << "Exiting the program.\n";
+                return 0;
+            default:
+                cout << "Invalid choice! Please try again.\n";
+        }
+    }
+}
