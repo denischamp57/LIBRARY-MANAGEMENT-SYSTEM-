@@ -23,60 +23,51 @@ struct Book {
 
 2.1 Library Class
 
-manages book-related operations:
+manages book-related activities:
 class Library {
 private:
     vector<Book> books;
-    int bookCount;
+    int Noofbooks;
 
 public:
-    Library() : bookCount(0) {}
+    Library() : Noofbooks(0) {}
 
     void addBook();        // Add a new book
     void displayBooks();   // Display all books
-    void searchBook();     // Search for a book
+    void booksearch();     // Search for a book
 };
-4.3 Functionality
-✔ Adding a Book
-Prompts the user to enter book details and stores them:
+2.2 Functionality
+Adding a Book
+asks the user to enter book details and stores them:
 
-cpp
-Copy
-Edit
 void Library::addBook() {
     Book newBook;
     cout << "Enter Book Title: ";
     cin.ignore();
     getline(cin, newBook.title);
-    cout << "Enter Author Name: ";
-    getline(cin, newBook.author);
-    newBook.id = ++bookCount;
+    cout << "Enter writer Name: ";
+    getline(cin, newBook.writer);
+    newBook.bookNo = ++Noofbooks;
     books.push_back(newBook);
-    cout << "Book added successfully! Book ID: " << newBook.id << endl;
+    cout << "Book added successfully! Book bookNo: " << newBook.bookNo << endl;
 }
-✔ Displaying Books
+ Displaying Books
 Loops through the vector and prints all books:
 
-cpp
-Copy
-Edit
 void Library::displayBooks() {
     if (books.empty()) {
         cout << "No books available.\n";
         return;
     }
     for (const auto& book : books) {
-        cout << "ID: " << book.id << ", Title: " << book.title 
-             << ", Author: " << book.author << endl;
+        cout << "bookNo: " << book.bookNo << ", Title: " << book.title 
+             << ", writer: " << book.writer << endl;
     }
 }
-✔ Searching for a Book
+ Searching for a Book
 Compares input with stored book titles:
 
-cpp
-Copy
-Edit
-void Library::searchBook() {
+void Library::booksearch() {
     string searchTitle;
     cout << "Enter the book title to search: ";
     cin.ignore();
@@ -84,49 +75,25 @@ void Library::searchBook() {
 
     for (const auto& book : books) {
         if (book.title == searchTitle) {
-            cout << "Book Found! ID: " << book.id << ", Title: " << book.title 
-                 << ", Author: " << book.author << endl;
+            cout << "Book Found! bookNo: " << book.bookNo << ", Title: " << book.title 
+                 << ", writer: " << book.writer << endl;
             return;
         }
     }
     cout << "Book not found.\n";
 }
-5. Test Cases (test_library.cpp)
-Test	Expected Result
-Add a book	Book count increases
+
+3. Test Cases
+
+Test	=Expected Result
+Add a book=	Noofbooks increases
 Search book (exists)	Book found message
 Search book (not exists)	Book not found
 Display books	Correct list appears
-Example test function:
 
-cpp
-Copy
-Edit
-void testLibrary() {
-    Library lib;
-    lib.addBookManual("C++", "Bjarne Stroustrup");
-    assert(lib.getBookCount() == 1);
-    assert(lib.searchBookManual("C++") == true);
-    assert(lib.searchBookManual("Python") == false);
-    cout << "All tests passed!\n";
-}
-6. How to Compile and Run
-6.1 Compile Main Program
-sh
-Copy
-Edit
-g++ -o library main.cpp -std=c++11
-./library
-6.2 Compile and Run Tests
-sh
-Copy
-Edit
-g++ -o test_library test_library.cpp -std=c++11
-./test_library
-7. Future Enhancements
-Implement a database (MySQL, SQLite) for permanent storage
+4. Future maintenance and improvements 
+Incorporate a database (MySQL, SQLite) for permanent storage
 Add user authentication (Admin, Student roles)
-Implement book borrowing and return functionalities
-Build a Graphical User Interface (GUI)
+design a Graphical User Interface.
 8. Conclusion
-This project provides a simple Library Management System in C++ using OOP concepts and vectors. It is expandable and can be modified for more complex features.
+This project shows a Library Management System in C++ using OOP concepts.
